@@ -4,7 +4,7 @@ import random
 def refresh_confirm(device):
     x_min = 812
     x_max = 1039
-    y_min = 525
+    y_min = 539
     y_max = 585
     click_at_area(x_min, x_max, y_min, y_max, device)
 
@@ -29,6 +29,7 @@ def click_at_area(x_min, x_max, y_min, y_max, device):
     x = random.randint(x_min, x_max)
     y = random.randint(y_min, y_max)
     device.shell(f"input tap {x} {y}")
+    device.shell(f"input tap {x} {y}")
 
 # scroll down on the shop
 def scroll_shop(device):
@@ -39,4 +40,5 @@ def purchase(device, y):
     x_min = 1355
     x_max = 1550
     x = random.randint(x_min, x_max)
+    device.shell(f"input tap {x} {y+10}")
     device.shell(f"input tap {x} {y+10}")

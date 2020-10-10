@@ -21,11 +21,14 @@ def main():
     print("---Startning main loop---")
     
     while True:
-        # do gem and gold check
-        gold, gems = get_gold_and_gems()
-        print(f"Current gold: {gold}, current gems: {gems}")
-        if(int(gold) <= GOLD_MIN or int(gems) <= GEMS_MIN):
-            break
+        # do gem and gold check. Since OCR isn't reliable, the min checks aren't hard stops
+        try:
+            gold, gems = get_gold_and_gems()
+            print(f"Current gold: {gold}, current gems: {gems}")
+            if(int(gold) <= GOLD_MIN or int(gems) <= GEMS_MIN):
+                break
+        except Exception:
+            print("Couldn't do OCR")
 
         # check top of shop
         take_screenshot(device)
