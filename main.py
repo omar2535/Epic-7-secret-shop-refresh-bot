@@ -53,10 +53,7 @@ def main():
         click_refresh(device)
         time.sleep(0.5)
         refresh_confirm(device)
-        time.sleep(0.1)
-
-        # update stats file
-        update_stats_file(covenants_seen, mystics_seen)
+        time.sleep(0.5)
 
         # if resource count not above threshold, stop the program
         if not is_resource_count_above_threshold():
@@ -93,12 +90,10 @@ def check_for_bookmarks_and_purchase(device, covenants_seen, mystics_seen):
         purchase(device, covenant_bookmarks_location[1])
         time.sleep(0.1)
         purchase_confirm(device)
-        covenants_seen += 1
     if mystic_bookmarks_location:
         purchase(device, mystic_bookmarks_location[1])
         time.sleep(0.1)
         purchase_confirm(device)
-        mystics_seen += 1
 
 # do gem and gold check. Since OCR isn't reliable, the min checks aren't hard stops
 def is_resource_count_above_threshold():
