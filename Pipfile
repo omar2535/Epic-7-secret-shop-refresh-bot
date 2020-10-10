@@ -10,6 +10,8 @@ pure-python-adb = "*"
 pillow = "*"
 pyautogui = "*"
 pytesseract = "*"
+pyyaml = "*"
+opencv-python = "*"
 
 [requires]
 python_version = "3.8"
