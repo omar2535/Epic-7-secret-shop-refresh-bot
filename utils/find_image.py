@@ -34,3 +34,11 @@ def find_covenant_bookmarks():
     if result is None:
         return False
     return result.left + result.width/2, result.top + result.height *3/4
+
+# returns x and y cordinates
+# of mystic bookmarks location on the screen
+def find_mystic_bookmarks():
+    result = pyautogui.locate("matches/mystic_bookmarks.png", "screenshots/screen.png", confidence=0.8)
+    if result is None:
+        return False
+    return result.left + result.width/2, result.top + result.height *3/4

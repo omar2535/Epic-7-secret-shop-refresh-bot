@@ -37,7 +37,7 @@ def scroll_shop(device):
 
 # click on purchase
 def purchase(device, y):
-    x_min = 1355
+    x_min = 1455
     x_max = 1550
     x = random.randint(x_min, x_max)
     device.shell(f"input tap {x} {y+10}")
