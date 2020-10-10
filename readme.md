@@ -61,3 +61,7 @@ In a command prompt, run
 ```sh
 python main.py
 ```
+
+## Improvements / Suggestions
+
+Message me for improvements.
