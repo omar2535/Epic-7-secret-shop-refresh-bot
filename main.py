@@ -1,18 +1,25 @@
+from utils.adb_manager import start_adb_server
 from ppadb.client import Client as AdbClient
 from utils.resource_manager import get_gold_and_gems
 from utils.find_image import find_covenant_bookmarks, find_mystic_bookmarks
 from utils.inputs import *
+import pytesseract
 import time
 import yaml
 
+
+DEFAULT_TESSERACT_LOCATION = r'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
+SIZE = "1600x900"
+DENSITY = 240
+
+# do config file loading
 with open("config.yml", 'r') as stream:
     data = yaml.safe_load(stream)
 
+pytesseract.pytesseract.tesseract_cmd = data['Tesseract_path'] or DEFAULT_TESSERACT_LOCATION
 HOST = data['Host'] or "127.0.0.1"
 PORT = data['Port'] or 5037
 NAME = data['Name'] or "emulator-5554"
-SIZE = "1600x900"
-DENSITY = 240
 
 # game related stats
 GOLD_MIN = data['Gold_min'] or 0
@@ -32,9 +39,9 @@ def main():
         check_for_bookmarks_and_purchase(device, covenants_seen, mystics_seen)
 
         # scroll down to bottom of shop
-        time.sleep(0.1)
+        time.sleep(0.5)
         scroll_shop(device)
-        time.sleep(0.1)
+        time.sleep(0.5)
 
         # check bottom of shop
         check_for_bookmarks_and_purchase(device, covenants_seen, mystics_seen)
@@ -60,6 +67,7 @@ def main():
 
 # Sets up ADB device
 def device_setup():
+    start_adb_server()
     client = AdbClient(host="127.0.0.1", port=5037)
     device = client.device("emulator-5554")
     device.shell(f"wm size {SIZE}")
@@ -78,6 +86,7 @@ def take_screenshot(device):
 def check_for_bookmarks_and_purchase(device, covenants_seen, mystics_seen):
     # check bottom of shop
     take_screenshot(device)
+    time.sleep(1)
     covenant_bookmarks_location = find_covenant_bookmarks()
     mystic_bookmarks_location = find_mystic_bookmarks()
     if covenant_bookmarks_location:
@@ -98,8 +107,8 @@ def is_resource_count_above_threshold():
         print(f"Current gold: {gold}, current gems: {gems}")
         if(int(gold) <= GOLD_MIN or int(gems) <= GEMS_MIN):
             return False
-    except Exception:
-        print("Couldn't do OCR")
+    except Exception as e:
+        print(f"Couldn't do OCR: {e}")
         return True
     return True
 
