@@ -18,15 +18,18 @@ DENSITY = 240
 GOLD_MIN = data['Gold_min'] or 0
 GEMS_MIN = data['Gems_min'] or 0
 
+
 # main program to be called
 def main():
+    mystics_seen = 0
+    covenants_seen = 0
+
     device = device_setup()
     print(f"---Startning shop refresher. MIN_GEMS: {GEMS_MIN}, MIN_GOLD: {GOLD_MIN} ---")
-    
+
     while True:
         # check top of shop
-        check_for_bookmarks_and_purchase(device)
-
+        check_for_bookmarks_and_purchase(device, covenants_seen, mystics_seen)
 
         # scroll down to bottom of shop
         time.sleep(0.1)
@@ -34,7 +37,7 @@ def main():
         time.sleep(0.1)
 
         # check bottom of shop
-        check_for_bookmarks_and_purchase(device)
+        check_for_bookmarks_and_purchase(device, covenants_seen, mystics_seen)
 
         # sleep for a bit before refreshing
         time.sleep(0.5)
@@ -44,6 +47,9 @@ def main():
         time.sleep(0.5)
         refresh_confirm(device)
         time.sleep(0.1)
+
+        # update stats file
+        update_stats_file(covenants_seen, mystics_seen)
 
         # if resource count not above threshold, stop the program
         if not is_resource_count_above_threshold():
@@ -69,7 +75,7 @@ def take_screenshot(device):
         fp.write(result)
 
 # checks for bookmarks and purchases them
-def check_for_bookmarks_and_purchase(device):
+def check_for_bookmarks_and_purchase(device, covenants_seen, mystics_seen):
     # check bottom of shop
     take_screenshot(device)
     covenant_bookmarks_location = find_covenant_bookmarks()
@@ -78,10 +84,12 @@ def check_for_bookmarks_and_purchase(device):
         purchase(device, covenant_bookmarks_location[1])
         time.sleep(0.1)
         purchase_confirm(device)
+        covenants_seen += 1
     if mystic_bookmarks_location:
         purchase(device, mystic_bookmarks_location[1])
         time.sleep(0.1)
         purchase_confirm(device)
+        mystics_seen += 1
 
 # do gem and gold check. Since OCR isn't reliable, the min checks aren't hard stops
 def is_resource_count_above_threshold():
@@ -94,6 +102,14 @@ def is_resource_count_above_threshold():
         print("Couldn't do OCR")
         return True
     return True
+
+
+# update statistics
+def update_stats_file(covenants_seen, mystics_seen):
+    f = open("stats.txt", "w")
+    f.write(f'''Covenant bookmarks purchased: {covenants_seen}
+Mystic bookmarks purchased: {mystics_seen}''')
+    f.close()
 
 if __name__ == '__main__':
     main()

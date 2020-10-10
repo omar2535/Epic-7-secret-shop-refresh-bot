@@ -33,4 +33,3 @@ def crop_resources_from_screenshot():
     crop_img = img[RESOURCE_Y_START:RESOURCE_Y_END, RESOURCE_X_START:RESOURCE_X_END]
     cv.imwrite("screenshots/resources.png", crop_img)
     return crop_img
-
