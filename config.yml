@@ -1,11 +1,11 @@
 # Emulator config
 Host: "127.0.0.1"
 Port: 5037
-Name: "emulator-5554"
+Name: "localhost:5555"
 
 # library config
 Tesseract_path: 'E:\Tesseract-OCR\tesseract.exe'
 
 # Game resource config
 Gold_min: 0
-Gems_min: 850
+Gems_min: 0

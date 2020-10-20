@@ -50,9 +50,32 @@ Open a command prompt and navigate to where this project was downloaded to. Run
 pip install -r requirements.txt
 ```
 
+### Step 6: Connect ADB to the emulator ADB
+
+Connect to the bluestacks ADB
+
+```sh
+adb connect localhost:5555
+```
+
+Now run 
+
+```sh
+adb devices -l
+```
+
+and note down the name of the device.
+
+For example, the device name of the following would be `localhost:5555`:
+
+```sh
+List of devices attached
+localhost:5555         device product:OnePlus3 model:ONEPLUS_A3010 device:OnePlus3T transport_id:2
+```
+
 ### Step 7: Set up config.yml
 
-Open config.yml and make sure everything in there looks correct.
+Open config.yml and make sure everything in there looks correct. Change the device name if needed.
 
 ### Step 8: Run the script
 

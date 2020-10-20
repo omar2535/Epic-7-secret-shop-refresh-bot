@@ -65,8 +65,8 @@ def main():
 # Sets up ADB device
 def device_setup():
     start_adb_server()
-    client = AdbClient(host="127.0.0.1", port=5037)
-    device = client.device("emulator-5554")
+    client = AdbClient(host=HOST, port=PORT)
+    device = client.device(NAME)
     device.shell(f"wm size {SIZE}")
     device.shell(f"wm density {DENSITY}")
     return device
