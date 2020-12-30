@@ -32,7 +32,7 @@ def main():
     covenants_seen = 0
 
     device = device_setup()
-    print(f"---Startning shop refresher. MIN_GEMS: {GEMS_MIN}, MIN_GOLD: {GOLD_MIN} ---")
+    print(f"---Starting shop refresher. MIN_GEMS: {GEMS_MIN}, MIN_GOLD: {GOLD_MIN} ---")
 
     while True:
         # check top of shop
