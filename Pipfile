@@ -19,7 +19,7 @@ PyMsgBox = "==1.0.8"
 PyRect = "==0.1.4"
 PyScreeze = "==0.1.26"
 PyTweening = "==1.0.3"
-PyYAML = "==5.3.1"
+PyYAML = "==5.4"
 
 [requires]
 python_version = "3.8"
