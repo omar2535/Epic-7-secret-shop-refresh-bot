@@ -53,7 +53,7 @@ def main():
         click_refresh(device)
         time.sleep(0.5)
         refresh_confirm(device)
-        time.sleep(0.5)
+        time.sleep(1)
 
         # if resource count not above threshold, stop the program
         if not is_resource_count_above_threshold():
@@ -64,8 +64,8 @@ def main():
 
 # Sets up ADB device
 def device_setup():
-    start_adb_server()
-    client = AdbClient(host=HOST, port=PORT)
+    start_adb_server(PORT)
+    client = AdbClient(host=HOST)
     device = client.device(NAME)
     device.shell(f"wm size {SIZE}")
     device.shell(f"wm density {DENSITY}")
