@@ -3,6 +3,7 @@ from ppadb.client import Client as AdbClient
 from utils.resource_manager import get_gold_and_gems
 from utils.find_image import find_covenant_bookmarks, find_mystic_bookmarks
 from utils.inputs import *
+
 import pytesseract
 import time
 import yaml
