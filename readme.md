@@ -1,6 +1,8 @@
 # Epic seven shop auto-refresher
 
-This auto-refresher for epic seven saves you the time of shop-refreshing by doing it automagically for you.
+**Author's note (2024-01-29):** Deciding to open-source this as I have not been using this tool in the last 2 years now. This application likely still works as the secret shop has not had any changes since release; however, it might be quicker to reverse engineer the API which each refresh + purchase calls instead of waiting for the UI to have to load every single time to do OCR. I have some ideas about this, but am not motivated enough to do this (yet). Regardless, if you're interested feel free to ping me! - Omar
+
+This auto-refresher for Epic Seven saves you the time of shop-refreshing by doing it automagically for you.
 
 ## Getting started
 
