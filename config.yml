@@ -4,7 +4,7 @@ Port: 5037
 Name: "emulator-5554"
 
 # library config
-Tesseract_path: 'C:\Program Files\Tesseract-OCR'
+Tesseract_path: 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 
 # Game resource config
 Gold_min: 0

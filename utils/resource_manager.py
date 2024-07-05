@@ -1,5 +1,6 @@
 import cv2 as cv
 import pytesseract
+import re
 
 # pixel start of resource amount
 RESOURCE_X_START = 980
@@ -13,8 +14,8 @@ def get_gold_and_gems():
     image = crop_resources_from_screenshot()
     text = pytesseract.image_to_string(image)
     text = text.split()
-    gold = text[1].replace(',', '')
-    gems = text[3].replace(',', '')
+    gold = re.sub('[^0-9]', '', text[0])
+    gems = re.sub('[^0-9]', '', ''.join(text[1:]))
     return gold, gems
 
 
@@ -22,5 +23,5 @@ def get_gold_and_gems():
 def crop_resources_from_screenshot():
     img = cv.imread("screenshots/screen.png")
     crop_img = img[RESOURCE_Y_START:RESOURCE_Y_END, RESOURCE_X_START:RESOURCE_X_END]
-    # cv.imwrite("screenshots/resources.png", crop_img)
+    cv.imwrite("screenshots/resources.png", crop_img)
     return crop_img

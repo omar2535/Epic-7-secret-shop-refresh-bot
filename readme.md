@@ -49,7 +49,9 @@ Make sure python is installed on your machine. Link is [here](https://www.python
 Open a command prompt and navigate to where this project was downloaded to. Run
 
 ```sh
-pip install -r requirements.txt
+python -m venv .venv
+poetry shell
+poetry install
 ```
 
 ### Step 6: Connect ADB to the emulator ADB
@@ -60,7 +62,7 @@ Connect to the bluestacks ADB
 adb connect localhost:5555
 ```
 
-Now run 
+Now run
 
 ```sh
 adb devices -l
@@ -81,7 +83,7 @@ Open config.yml and make sure everything in there looks correct. Change the devi
 
 ### Step 8: Run the script
 
-In a command prompt, run 
+In a command prompt, run
 
 ```sh
 python main.py
