@@ -2,7 +2,8 @@ from utils.adb_manager import start_adb_server
 from ppadb.client import Client as AdbClient
 from utils.resource_manager import get_gold_and_gems
 from utils.find_image import find_covenant_bookmarks, find_mystic_bookmarks
-from utils.inputs import *
+from utils.inputs import scroll_shop, refresh_confirm, purchase_confirm, click_refresh, purchase
+
 
 import pytesseract
 import time
@@ -80,6 +81,7 @@ def take_screenshot(device):
     with open("screenshots/screen.png", "wb") as fp:
         fp.write(result)
 
+
 # checks for bookmarks and purchases them
 def check_for_bookmarks_and_purchase(device, covenants_seen, mystics_seen):
     # check bottom of shop
@@ -96,12 +98,13 @@ def check_for_bookmarks_and_purchase(device, covenants_seen, mystics_seen):
         time.sleep(0.1)
         purchase_confirm(device)
 
+
 # do gem and gold check. Since OCR isn't reliable, the min checks aren't hard stops
 def is_resource_count_above_threshold():
     try:
         gold, gems = get_gold_and_gems()
         print(f"Current gold: {gold}, current gems: {gems}")
-        if(int(gold) <= GOLD_MIN or int(gems) <= GEMS_MIN):
+        if (int(gold) <= GOLD_MIN or int(gems) <= GEMS_MIN):
             return False
     except Exception as e:
         print(f"Couldn't do OCR: {e}")
@@ -112,9 +115,9 @@ def is_resource_count_above_threshold():
 # update statistics
 def update_stats_file(covenants_seen, mystics_seen):
     f = open("stats.txt", "w")
-    f.write(f'''Covenant bookmarks purchased: {covenants_seen}
-Mystic bookmarks purchased: {mystics_seen}''')
+    f.write(f'''Covenant bookmarks purchased: {covenants_seen} Mystic bookmarks purchased: {mystics_seen}''')
     f.close()
+
 
 if __name__ == '__main__':
     main()
