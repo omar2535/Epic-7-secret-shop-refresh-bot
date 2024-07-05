@@ -4,6 +4,10 @@
 
 This auto-refresher for Epic Seven saves you the time of shop-refreshing by doing it automagically for you.
 
+<p align="center">
+    <img src="./documentation/secret-shop-guy.png"></img>
+</p>
+
 ## Getting started
 
 There are a few steps involved with getting this set up. This guide is for windows 10 only.
@@ -91,4 +95,9 @@ python main.py
 
 ## Improvements / Suggestions
 
-Message me for improvements.
+If you want a better match for images, look in `/matches` for the matching images:
+
+![Bookmarks](./matches/covenant_bookmarks.png)
+![Mystics](./matches/mystic_bookmarks.png)
+
+Other than that, message me for improvements.
