@@ -81,10 +81,12 @@ class RefreshSecretShop:
         return True
 
     def update_stats_file(self):
+        """Updates the stats file with the current number of purchases and refreshes.
+        """
         f = open("stats.txt", "w")
-        f.write(f"Covenant bookmarks purchased: {self.num_covenant_purchases * 5}\n")
-        f.write(f"Mystic bookmarks purchased: {self.num_mystic_purchases * 50}\n")
-        f.write(f"Num refreshes: {self.num_refreshes}\n")
-        f.write(f"Covernant rate: {float(self.num_covenant_purchases) / float(self.num_refreshes) * 100}%\n")
-        f.write(f"Mystic rate: {float(self.num_mystic_purchases) / float(self.num_refreshes) * 100}%\n")
+        f.write(f"Num covenant bookmarks: {self.num_covenant_purchases}, Covenant bookmarks purchased: {self.num_covenant_purchases * 5}\n")
+        f.write(f"Num mystic bookmarks: {self.num_mystic_purchases}, Mystic bookmarks purchased: {self.num_mystic_purchases * 50}\n")
+        f.write(f"Num refreshes: {self.num_refreshes}, Skystones spent: {self.num_refreshes * 3}\n")
+        f.write(f"Covernant rate: {round(float(self.num_covenant_purchases) / float(self.num_refreshes) * 100, 2)}%\n")
+        f.write(f"Mystic rate: {round(float(self.num_mystic_purchases) / float(self.num_refreshes) * 100, 2)}%\n")
         f.close()
