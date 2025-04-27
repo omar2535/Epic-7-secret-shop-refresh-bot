@@ -2,18 +2,10 @@ import cv2 as cv
 import easyocr
 import re
 
-# Initialize EasyOCR Reader (English only, adjust languages if needed)
-reader = easyocr.Reader(['en'], gpu=False)
-
-# pixel start of resource amount
-RESOURCE_X_START = 980
-RESOURCE_X_END = 1296
-RESOURCE_Y_START = 18
-RESOURCE_Y_END = 65
-
 
 # gets gold amount
 def get_gold_and_gems():
+    reader = easyocr.Reader(['en'], gpu=False)
     image = crop_resources_from_screenshot()
 
     # EasyOCR expects filepath or image array
@@ -31,7 +23,13 @@ def get_gold_and_gems():
 
 # crops image
 def crop_resources_from_screenshot():
+    # pixel start of resource amount
+    resource_x_start = 980
+    resource_x_end = 1296
+    resource_y_start = 18
+    resource_y_end = 65
+
     img = cv.imread("screenshots/screen.png")
-    crop_img = img[RESOURCE_Y_START:RESOURCE_Y_END, RESOURCE_X_START:RESOURCE_X_END]
+    crop_img = img[resource_y_start:resource_y_end, resource_x_start:resource_x_end]
     cv.imwrite("screenshots/resources.png", crop_img)
     return crop_img
