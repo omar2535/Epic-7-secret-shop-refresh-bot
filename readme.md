@@ -40,15 +40,11 @@ Now unzip and move to a folder of your choosing. Remember that folder! We will n
 
     ![bluestacks_adb](./documentation/bluestacks_adb.PNG)
 
-### Step 4: Installing Tesseract
-
-Install either the 32 bit or 64 bit tesseract installer from [here](https://github.com/UB-Mannheim/tesseract/wiki)
-
-### Step 5: Install python
+### Step 4: Install python
 
 Make sure python is installed on your machine. Link is [here](https://www.python.org/downloads/windows/)
 
-### Step 6: Install python dependencies
+### Step 5: Install python dependencies
 
 Open a command prompt and navigate to where this project was downloaded to. Run
 

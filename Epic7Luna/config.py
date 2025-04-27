@@ -9,7 +9,6 @@ class Config:
     HOST: str = "127.0.0.1"
     PORT: int = 5037
     DEVICE_NAME: str = "emulator-5554"
-    TESSERACT_PATH: str = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
     GOLD_MIN: int = 0
     GEMS_MIN: int = 0
     SIZE: str = "1600x900"
@@ -37,8 +36,6 @@ class Config:
                         self.PORT = yaml_config["Port"]
                     if yaml_config.get("Name"):
                         self.DEVICE_NAME = yaml_config["Name"]
-                    if yaml_config.get("Tesseract_path"):
-                        self.TESSERACT_PATH = yaml_config["Tesseract_path"]
                     if yaml_config.get("Gold_min") is not None:
                         self.GOLD_MIN = yaml_config["Gold_min"]
                     if yaml_config.get("Gems_min") is not None:
