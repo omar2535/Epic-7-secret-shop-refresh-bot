@@ -5,7 +5,7 @@ import re
 
 # gets gold amount
 def get_gold_and_gems():
-    reader = easyocr.Reader(['en'], gpu=False)
+    reader = easyocr.Reader(['en'], verbose=False)
     image = crop_resources_from_screenshot()
 
     # EasyOCR expects filepath or image array
