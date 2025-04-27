@@ -1,8 +1,8 @@
 [project]
 name = "Epic7Luna"
 version = "0.1.0"
-description = ""
-authors = [{ name = "Omar2535", email = "omar2535@alumni.ubc.ca" }]
+description = "Automation for Epic 7"
+authors = [{ name = "Omar", email = "omar@ztasecurity.com" }]
 requires-python = ">=3.13"
 readme = "README.md"
 dependencies = [
@@ -20,7 +20,7 @@ dependencies = [
     "pyrect>=0.2.0,<0.3",
     "pyscreeze>=0.1.30,<0.2",
     "pytweening>=1.2.0,<2",
-    "pyyaml>=6.0.1,<7",
+    "pyyaml>=6.0.2,<7",
 ]
 
 [build-system]
