@@ -1,10 +1,9 @@
-from Epic7Luna.config import config
-
 import cv2 as cv
-import pytesseract
+import easyocr
 import re
 
-pytesseract .pytesseract.tesseract_cmd = config.TESSERACT_PATH
+# Initialize EasyOCR Reader (English only, adjust languages if needed)
+reader = easyocr.Reader(['en'], gpu=False)
 
 # pixel start of resource amount
 RESOURCE_X_START = 980
@@ -16,10 +15,17 @@ RESOURCE_Y_END = 65
 # gets gold amount
 def get_gold_and_gems():
     image = crop_resources_from_screenshot()
-    text = pytesseract.image_to_string(image)
-    text = text.split()
-    gold = re.sub('[^0-9]', '', text[0])
-    gems = re.sub('[^0-9]', '', ''.join(text[1:]))
+
+    # EasyOCR expects filepath or image array
+    results = reader.readtext(image, detail=0)  # detail=0 to get only the text
+
+    if len(results) < 2:
+        # In case OCR only found one item or failed
+        gold, gems = '', ''
+    else:
+        gold = re.sub('[^0-9]', '', str(results[0]))
+        gems = re.sub('[^0-9]', '', str(results[1]))
+
     return gold, gems
 
 

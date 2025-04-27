@@ -52,20 +52,16 @@ class RefreshSecretShop:
         print("---Program complete---")
 
     def check_for_bookmarks_and_purchase(self, device, covenants_seen: int, mystics_seen: int):
-        global num_covenant_purchases
-        global num_mystic_purchases
-
-        # check bottom of shop
-        take_screenshot(device)
         time.sleep(1)
+        take_screenshot(device)
         covenant_bookmarks_location = find_covenant_bookmarks()
         mystic_bookmarks_location = find_mystic_bookmarks()
-        if covenant_bookmarks_location:
+        if covenant_bookmarks_location != (0, 0):
             purchase(device, covenant_bookmarks_location[1])
             time.sleep(0.1)
             purchase_confirm(device)
             self.num_covenant_purchases += 1
-        if mystic_bookmarks_location:
+        if mystic_bookmarks_location != (0, 0):
             purchase(device, mystic_bookmarks_location[1])
             time.sleep(0.1)
             purchase_confirm(device)

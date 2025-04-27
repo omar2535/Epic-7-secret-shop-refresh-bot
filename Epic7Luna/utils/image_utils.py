@@ -31,29 +31,65 @@ def find_subimage_low_x(im1, im2):
 
 # returns x and y cordinates
 # of covenant bookmark location on the screen
-def find_covenant_bookmarks():
+def find_covenant_bookmarks() -> tuple:
     try:
         result = pyautogui.locate(
             "matches/covenant_bookmarks.png", "screenshots/screen.png", confidence=0.8
         )
         if result is None:
-            return False
+            return 0, 0
     except pyautogui.ImageNotFoundException:
-        return False
+        return 0, 0
     return result.left + result.width / 2, result.top + result.height * 3 / 4
 
 
 # returns x and y cordinates
 # of mystic bookmarks location on the screen
-def find_mystic_bookmarks():
+def find_mystic_bookmarks() -> tuple:
     try:
         result = pyautogui.locate(
             "matches/mystic_bookmarks.png", "screenshots/screen.png", confidence=0.8
         )
         if result is None:
-            return False
+            return 0, 0
     except pyautogui.ImageNotFoundException:
-        return False
+        return 0, 0
+    return result.left + result.width / 2, result.top + result.height * 3 / 4
+
+
+def find_purchase_covenant() -> tuple:
+    """Finds the purchase covenant button on the screen.
+    Returns the x and y coordinates of the button.
+
+    Returns:
+        tuple (x, y): The x and y coordinates of the button.
+    """
+    try:
+        result = pyautogui.locate(
+            "matches/purchase_covenant.png", "screenshots/screen.png", confidence=0.8
+        )
+        if result is None:
+            return 0, 0
+    except pyautogui.ImageNotFoundException:
+        return 0, 0
+    return result.left + result.width / 2, result.top + result.height * 3 / 4
+
+
+def find_buy_confirm() -> tuple:
+    """Finds the buy confirm button on the screen.
+    Returns the x and y coordinates of the button.
+
+    Returns:
+        tuple (x, y): The x and y coordinates of the button.
+    """
+    try:
+        result = pyautogui.locate(
+            "matches/buy_confirm.png", "screenshots/screen.png", confidence=0.8
+        )
+        if result is None:
+            return 0, 0
+    except pyautogui.ImageNotFoundException:
+        return 0, 0
     return result.left + result.width / 2, result.top + result.height * 3 / 4
 
 

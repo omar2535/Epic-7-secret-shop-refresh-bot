@@ -1,4 +1,5 @@
 import random
+from Epic7Luna.utils.image_utils import find_buy_confirm
 
 
 # refresh shop confirm
@@ -12,7 +13,7 @@ def refresh_confirm(device):
 
 # purchase confirm
 def purchase_confirm(device):
-    x_min = 740
+    x_min = 812
     x_max = 1000
     y_min = 620
     y_max = 660
@@ -46,5 +47,5 @@ def purchase(device, y):
     x_min = 1455
     x_max = 1550
     x = random.randint(x_min, x_max)
-    device.shell(f"input tap {x} {y+10}")
-    device.shell(f"input tap {x} {y+10}")
+    device.shell(f"input tap {x} {y + 10}")
+    device.shell(f"input tap {x} {y + 10}")
