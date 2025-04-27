@@ -1,6 +1,10 @@
+from Epic7Luna.config import config
+
 import cv2 as cv
 import pytesseract
 import re
+
+pytesseract .pytesseract.tesseract_cmd = config.TESSERACT_PATH
 
 # pixel start of resource amount
 RESOURCE_X_START = 980
